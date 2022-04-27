@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs {% endblock %}
+
+{% block body %}
+    <h1>Les Utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.adresse }}</td>
+                <td>{{ utilisateur.ville }}</td>
+                <td>
+                    <a href="{{ path('app_admin_utilisateurs_show', {'id': utilisateur.id}) }}" class="btn btn-light">Voir</a>
+                    <a href="{{ path('app_admin_utilisateurs_edit', {'id': utilisateur.id}) }}"class="btn btn-dark">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Aucun Enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_utilisateurs_new') }}" class="btn btn-dark">Créer nouveau Profil</a>
+{% endblock %}

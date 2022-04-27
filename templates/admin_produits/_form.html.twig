@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+<section class="form_produits">
+    {{ form_widget(form) }}
+    <div>
+          <button  style="margin-top:620px"class="btn btn-light">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+{{ form_end(form) }}
+<figure class="img_form"><img src="{{asset('assets/img/imgproduit.webp')}}" alt="image"></figure>
+</section>
+
+

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accessoires{% endblock %}
+
+{% block body %}
+ <h1>Nos Accessoires </h1>
+
+<section class="accessoires">
+{% for produit in produits %}
+    <div class="carte">
+           <div class="imgCard">
+                <img src="{{asset('assets/upload/' ~ produit.image ) }}">
+            </div>
+            <div class="contentCard">
+                <h3>{{ produit.nom }}</h3>
+                <h4 class="prix">{{ produit.prix }}€</h4>
+                <a href="{{ path('app_panier', {'id': produit.id}) }}" class="panier">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <a href="{{ path('app_accessoires_show', {'id': produit.id}) }}">
+                     <i  style="color:black" class="fa-solid fa-eye"></i>
+                </a>
+            </div>
+    </div>
+{% endfor %}
+</section>
+
+{% endblock %}

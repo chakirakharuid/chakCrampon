@@ -1,0 +1,80 @@
+<header class="top_header">
+	<nav id="navigation" role="navigation">
+		<figure>
+			<a href="/home">
+				<img src="{{asset('assets/img/logoo.png')}}" alt="logo"></a>
+		</figure>
+		<ul class="nav">
+		{% if  is_granted('ROLE_ADMIN') %}
+         <div class="dropdown">
+				<li class="dropbtn"><a>PROFIL</a>
+				</li>
+				<div class="dropdown-content">
+                	<li >
+					<a href="{{ path('app_admin_categories_index') }}">Les catégories</a>
+					</li>
+					<li>
+					<a href="{{ path('app_admin_produits_index') }}">Tous les Produits</a>
+					</li>
+					<li >
+					<a href="{{ path('app_admin_commentaires_index') }}">Les Commentaires</a>
+					</li>				
+					<li >
+					<a href="{{ path('app_admin_utilisateurs_index') }}">Les Utilisateurs</a>
+					</li>
+                </div>
+		</div>
+
+		{% endif %}
+			<li>
+				<a href="{{ path('app_qui_sommes_nous') }}">Qui sommes nous?</a>
+			</li>
+			<div class="dropdown">
+				<li class="dropbtn">
+					<a href="">Chaussures crampons/<br>
+					   Crampons personnalisables</a>
+				</li>
+				<div class="dropdown-content">
+					<a href="{{ path('app_home') }}">Nos modèles de crampons</a>
+					<a href="{{ path('app_home') }}">Configurer votre crampon</a>
+				</div>
+			</div>
+		<li>
+			<a href="{{ path('app_accessoires') }}">Accessoires</a>
+		</li>
+		<li>
+			<a href="{{ path('app_on_parle_de_nous') }}">On parle de nous</a>
+		</li>
+
+		<li>
+			<a href="{{ path('app_contact') }}">Contact</a>
+		</li>
+		<li id="panier">
+			<a href="{{ path('app_panier_vu')}}" title="panier">
+				<i class="fa-solid fa-cart-shopping"></i>
+			</a>
+		</li>
+		{% if not is_granted('ROLE_USER') %}
+			<li class="none">
+				<a href="{{ path('app_connexion') }}">
+					<i title="connexion" class="fa-solid fa-user"></i>
+				</a>
+				<a href="{{ path('app_inscription') }}">
+					<i style="margin-left:15px" title="Inscription" class="fa-solid fa-address-card"></i>
+				</a>
+			</li>
+		{% else %}
+			<li class="none">
+				<a href="{{ path('app_logout') }}">
+					<i title="deconnexion" class="fa-solid fa-arrow-right-from-bracket"></i>
+				</a>
+
+			</li>
+		{% endif %}
+
+		<li>
+			<a href="{{ path('app_blog') }}">Blog</a>
+		</li>
+
+	</ul>
+</nav></header><main>

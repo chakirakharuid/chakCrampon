@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Catégorie{% endblock %}
+
+{% block body %}
+    <h1>Modifier la catégorie</h1>
+
+    {{ include('admin_categories/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_admin_categories_index') }}" class="btn btn-light">Retour à la liste</a>
+
+    {{ include('admin_categories/_delete_form.html.twig') }}
+{% endblock %}

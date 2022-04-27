@@ -1,0 +1,461 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ /*HEADER*/
+
+#navigation{
+    width: 100%;
+    margin: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+#navigation > figure {
+        padding-left: 10px;
+        
+}
+
+#navigation > ul {
+    width: 100%;
+}
+
+#navigation>ul li {
+    margin-left: 20px;
+    }
+#navigation ul li a{
+     text-decoration: none;
+     color:#9A90C2;
+    font-family: 'Bebas Neue', cursive;
+   font-size: 18px;
+}
+
+.top_header{
+width: 100%;
+background-color:white;
+}
+.nav{
+    display: flex;
+    flex-direction:row;
+    
+}
+li{
+ list-style: none;
+}
+/* MENU DROPDOWN */
+
+.dropdown .dropbtn {
+font-size: 16px;  
+border: none;
+outline: none;
+color: white;
+padding: 0px 16px 7px;
+font-family: inherit;
+margin: 0;
+}
+
+.nav a:hover{
+background-color:#9EC49F ;
+}
+.none a:hover{
+    background-color: white;
+}
+#panier  a:hover{
+    background-color: white;
+    color: green;
+}
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+min-width: 180px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+float: none;
+color: #9A90C2;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+font-size: 16px;  
+font-family: 'Bebas Neue', cursive;
+}
+
+.dropdown-content a:hover {
+background-color: pink;
+color:black;
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+/*BODY*/
+body{
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+     font-family: 'Alfa Slab One', cursive;
+     margin-bottom: 2em;
+ }
+main{
+    min-height: 650px;
+}
+p{
+ font-family: 'Libre Bodoni', serif;
+}
+h2{
+    color: #9a90c2;
+   font-family: 'Bebas Neue', cursive;
+   text-align: center;
+}
+h4{
+    font-family: 'Alfa Slab One', cursive;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 200px;
+    margin-top: 250px;
+}
+/*QUI SOMMES NOUS*/
+.description {
+    background-color: whitesmoke;
+    border-radius: 30px  ;
+    width: 50%;
+    margin-left: 2em;
+    padding: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 5em;
+}
+.img_nous{
+    margin-right: 2em;
+    margin-left: 5em;
+    margin-top: 15px;
+    
+}
+#qui_sommes{
+    display: flex;
+    flex-direction: row;
+}
+
+/*CONTACT*/
+.form_contact{
+    display: flex;
+    justify-content: center;
+    background-color:whitesmoke;
+    height: 30em;
+    width: 70%;
+    margin-left: 200px;
+}
+.form_contact form{
+    background-color:  #9A90C2;
+    border-radius: 20px;
+    height: 20em;
+    margin-top: 80px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5em;
+}
+
+.form_contact form input{
+   display: flex;
+   justify-content: center;
+   padding-top: 10px;
+
+   
+}
+.form_contact form button{
+   margin-top: 1em;
+   /* border-style:outset; */
+   border-radius: 2vh;
+   background-color:black;
+   color: #f9f9f9;
+   width:80px
+}
+.repond{
+    size: 2em;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/*INSCRIPTION*/
+#inscription{
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    background-color: whitesmoke;
+    height: 650px;
+    width: 70%;
+    margin-left: 220px;
+}
+.form_inscri{
+background-color: #9EC49F;
+width: 50%;
+margin:5em;
+border-radius: 20px;
+display: flex;
+justify-content: center;
+
+}
+.form_inscri input{
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+    
+}
+.form_inscri label{
+    padding-top: 12px;
+}
+
+#inscription .blackButton{
+    background-color: black;
+    border-radius: 2vh;
+    color: #f9f9f9;
+    height: 40px;
+    margin-top: 18em;
+    width: 5em;
+}
+
+/*CONNEXION*/
+
+.connexion{
+    background-color: whitesmoke;
+    width: 70%;
+    border-radius: 20px;
+    margin-left: 200px;
+    display: flex;
+    justify-content: center;
+    height: 350px;
+}
+
+.form_conn{
+    background-color:rgba(0, 55, 255, 0.779) ;
+    width: 35%;
+   border-radius: 2em;
+    margin:2em
+}
+
+.button{
+    background-color: black;
+    color: #f9f9f9;
+    border-top-left-radius: 1em;
+    width: 150px;
+    margin-top: 35px;
+    margin-left: 60px;
+}
+
+.input{
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*ACCESSOIRES*/
+.carte{
+    position: relative;
+    width: 320px;
+    height: 420px;
+   background:#9ec49f57;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 2em;
+}
+
+.carte::before{
+content: ' ';
+position: absolute;
+top:-50%;
+width: 100%;
+height: 100%;
+background: #9a90c28c;
+transform: skewY(345deg);
+transition: 0.5s;
+}
+
+.carte:hover::before{
+    top:-70%;
+    transform: skewY(390deg);
+
+}
+.carte::after{
+top:-70
+
+}
+.carte .imgCard{
+position:relative;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 20px;
+z-index: 1;
+}
+
+.carte .imgCard img{
+    width:100% ;
+    transition: 0.5s;
+}
+
+.carte:hover .imgCard img{
+max-width: 50%;
+
+}
+.carte .contentCard{
+    position: relative;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.carte .contentCard h3{
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.prix{
+
+    font-size: 24px;
+    font-weight: 500;
+     letter-spacing: 1px;
+}
+
+.carte .contentCard .panier{
+    position:relative;
+    top: 200px;
+    opacity: 0;
+    padding: 10px 30px;
+    margin-top: 15px;
+    color: black;
+    transition: 0.5s;
+}
+.carte:hover .contentCard .panier{
+    top:0;
+    opacity: 1;
+}
+
+.accessoires {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-between;
+justify-content: space-around;
+margin: 20px 20px 15px 15px; 
+}
+/*ACCESSOIRES SHOW*/
+#show{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    border-radius: 30px;
+    margin: 35px;
+    padding:2em;
+}
+.info{
+    width: 50%;
+    margin:2em;
+    
+}
+.info .panier{
+    color: black;
+    margin-left: 45px;
+}
+.info .panier:hover{
+   color: green;
+}
+
+.info p{
+margin-top: 30px;
+margin-bottom: 40px;
+}
+.blackButton{
+     background-color: black;
+    border-radius: 2vh;
+    color: #f9f9f9;
+    height: 40px;
+    width: 5em;
+    
+}
+
+/*FOOTER*/
+.footer{
+background-color:black;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+height: 80px;
+margin-top: 18px;
+}
+
+.footer a{
+    color:whitesmoke;
+    text-decoration: none;
+}
+.reseaux{
+    width: 280px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/*ADMIN AND USER
+/*ADMIN FORMULAIRE PRODUITS*/
+.form_produits{
+    display: flex;
+   flex-direction: row;
+    background-color: #9a90c2;
+    width: 40%;
+    height: 710px;
+   padding-top: 30px;
+   margin-left: 3em;
+   padding-left: 2em;
+   margin-bottom: 10px;
+   margin-top: 5em;
+ 
+}
+.form_produits input{
+    margin: 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_produits label{
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+}
+
+.img_form{
+    margin-left: 400px;
+    margin-right: 20px;
+    margin-top: 60px;
+    
+}
+
+/*ROLE USER formulaire paiement*/
+.payer form{
+    width: 800px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    
+}

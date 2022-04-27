@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accessoires{% endblock %}
+
+{% block body %}
+<section id="show">
+    <div class="info" >
+        <h1>{{ produit.nom }}</h1>
+        <p>{{ produit.description }}</p>
+        <a href="{{ path('app_accessoires') }}">
+	        <button class="blackButton">RETOUR</button>
+        </a>
+        <a href="{{ path('app_panier', {'id': produit.id}) }}" class="panier">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+     </div>
+ <div class="carte">
+           <div class="imgCard">
+                <img src="{{asset('assets/upload/' ~ produit.image ) }}">
+            </div>
+            <div class="contentCard">
+                <h4 class="prix">{{ produit.prix }}€</h4>
+                <a href="{{ path('app_panier', {'id': produit.id}) }}" class="panier">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </div>
+    </div>
+</section>
+    {% endblock %}

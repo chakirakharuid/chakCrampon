@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories {% endblock %}
+
+{% block body %}
+    <h1>Les Catégories </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.nom }}</td>
+                <td>
+                        <a href="{{ path('app_admin_categories_show', {'id': category.id}) }}" class="btn btn-light">Voir la catégorie</a>
+                         <a href="{{ path('app_admin_categories_edit', {'id': category.id}) }}" class="btn btn-dark">Modifier</a>
+                 </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_categories_new') }}" class="btn btn-dark" style="margin-left:100px">Enregistrer une nouvelle catégorie</a>
+{% endblock %}

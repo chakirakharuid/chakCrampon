@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits {% endblock %}
+
+{% block body %}
+    <h1>Les Produits Chak Crampon</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Couleur</th>
+                <th>Prix</th>
+                <th>Taille</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>
+                     <img src="{{asset('assets/upload/' ~ produit.image ) }}" width="30%">
+                </td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.couleur }}</td>
+                <td>{{ produit.prix }}€</td>
+                <td>{{ produit.taille }}</td>
+                <td>
+                    <a href="{{ path('app_admin_produits_show', {'id': produit.id}) }}" class=" btn btn-dark">Ce produit</a>
+
+                    <a href="{{ path('app_admin_produits_edit', {'id': produit.id}) }}" class="btn btn-light">Modifier</a>
+
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_produits_new') }}" style="margin-left:40%"class="btn btn-dark">Enregistrer un nouveau produit</a>
+{% endblock %}

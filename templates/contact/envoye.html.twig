@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<h1>Merci Mme/Mr {{data.nom}}</h1>
+<p>Votre email a bien étais envoyer avec les informations suivantes:</p>
+<p>Votre email {{data.email}} et votre numéro {{data.numero}}</p>
+
+{% endblock %}
