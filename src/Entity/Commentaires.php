@@ -16,9 +16,14 @@ class Commentaires
     #[ORM\Column(type: 'string', length: 255)]
     private $contenu;
 
+    #[ORM\Column(type: 'string', length: 30)]
+    private $Pseudo;
 
-    #[ORM\ManyToOne(targetEntity: Utilisateurs::class, inversedBy: 'commentaires')]
-    private $utilisateur;
+    #[ORM\Column(type: 'date', nullable: true)]
+    private $date_commentaire;
+
+
+ 
 
     public function getId(): ?int
     {
@@ -37,15 +42,28 @@ class Commentaires
         return $this;
     }
 
-    public function getUtilisateur(): ?Utilisateurs
+    public function getPseudo(): ?string
     {
-        return $this->utilisateur;
+        return $this->Pseudo;
     }
 
-    public function setUtilisateur(?Utilisateurs $utilisateur): self
+    public function setPseudo(string $Pseudo): self
     {
-        $this->utilisateur = $utilisateur;
+        $this->Pseudo = $Pseudo;
 
         return $this;
     }
+
+    public function getDateCommentaire(): ?\DateTimeInterface
+    {
+        return $this->date_commentaire;
+    }
+
+    public function setDateCommentaire(?\DateTimeInterface $date_commentaire): self
+    {
+        $this->date_commentaire = $date_commentaire;
+
+        return $this;
+    }
+
 }

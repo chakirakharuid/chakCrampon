@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'adminBase.html.twig' %}
 {% block title %}Produits {% endblock %}
 
 {% block body %}
     <h1>Les Produits Chak Crampon</h1>
-
+ <a href="{{ path('app_admin_produits_new') }}" style="margin-left:40%"class="btn btn-dark">Enregistrer un nouveau produit</a>
     <table class="table">
         <thead>
             <tr>
@@ -14,7 +13,6 @@
                 <th>Description</th>
                 <th>Couleur</th>
                 <th>Prix</th>
-                <th>Taille</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -29,14 +27,10 @@
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.couleur }}</td>
                 <td>{{ produit.prix }}€</td>
-                <td>{{ produit.taille }}</td>
                 <td>
-                    <a href="{{ path('app_admin_produits_show', {'id': produit.id}) }}" class=" btn btn-dark">Ce produit</a>
-
+                    <a href="{{ path('app_admin_produits_show', {'id': produit.id}) }}" class=" btn btn-dark">Voir</a>
                     <a href="{{ path('app_admin_produits_edit', {'id': produit.id}) }}" class="btn btn-light">Modifier</a>
-
                 </td>
-
             </tr>
         {% else %}
             <tr>
@@ -45,6 +39,6 @@
         {% endfor %}
         </tbody>
     </table>
+<a href="{{ path('app_admin_produits_new') }}" style="margin-left:40%" class="btn btn-dark">Enregistrer un nouveau produit</a>
 
-    <a href="{{ path('app_admin_produits_new') }}" style="margin-left:40%"class="btn btn-dark">Enregistrer un nouveau produit</a>
 {% endblock %}

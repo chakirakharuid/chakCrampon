@@ -1,46 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Panier{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
-    <h1> Votre Panier</h1>
-{% if lepanier is defined %}
-	{% if lepanier > 0 %}
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nom</th>
-				<th>Prix</th>
-				<th>quantite</th>
-				<th>total</th>
-				<th>Supprimer</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			{% for row in lepanier %}
-				<tr>
-					<td>{{ row.product.id }}</td>
-					<td>{{ row.product.nom }}</td>
-					<td>{{ row.product.prix }}</td>
-					<td>{{ row.quantite }}</td>
-					<td>{{ row.quantite * row.product.prix }}</td>
-					<td>
-					<a href="{{ path('app_supprimer', {'id': row.product.id}) }}"class="btn btn-danger">Supprimer du panier</a>
-					</td>
-				</tr>
-			{% endfor %}
-    </tbody>
-	</table>
-	<a style="margin-left:20px" href="{{ path('app_vider') }}" class="btn btn-danger">Vider le panier</a>
-	<br/>
-	<h4>Total :{{ total }}€</h4>
-			{% else %}
+	<h1> Votre Panier </h1>
+	{% if lepanier is defined %}
+		{% if lepanier > 0 %}
+			<section id="lepanier">
+				<div class="r">
+				{% for row in lepanier %}
+	               {% for key, value in row.taille %}
+						<div class="ficheP">
+							<h3>{{ row.product.nom }}</h3>
+							<div class="prix">
+								<img width="200px" src="{{asset('assets/upload/' ~ row.product.image ) }}">
+								<p style="margin-top:50px">{{ row.product.prix * value }}€</p>
+								<p style="margin-top:50px">Qté:{{ value }}</p>
+									{% if key != "aucune" %}
+							  <p style="margin-left:-50px">Pointure:{{key}}</p>
+							     {% endif %}
+							</div>
+							<a style="color:grey;" href="{{ path('app_supprimer', {'id': row.product.id, 'pointure':key}) }}">Supprimer</a>
+						</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+				<div class="recap">
+					<h4>
+						Récapitulatif
+					</h4>
+					<br>
+					<h5>Frais estimés de prise en charge et d'expédition  0 €</h5>
+					<hr>
+					<h4>Total :
+						{{ total }}€</h4>
+					<hr>
+					{% if lepanier > 0 %}
+						<button class="blackButton">
+							<a style="color:white; text-decoration: none;" href="{{ path('app_paiement') }}">Paiement</a>
+						</button>
+						<a style="margin-top:2em;color:grey" href="{{ path('app_vider') }}">Vider le panier</a>
+					{% endif %}
+				</div>
+			</section>
+		{% else %}
 			<h2>Votre panier est vide!</h2>
-			{% endif %}
-        {% endif %}
-<br/><br/>
-<a style="margin-left:20px" href="{{ path('app_payement') }}" class="btn btn-success">Payer</a>
-
+			<figure class="imgP">
+				<img src="{{asset("assets/img/panier.png")}}">
+			</figure>
+		{% endif %}
+	{% else %}
+		<h2>Votre panier est vide!</h2>
+		<figure class="imgP">
+			<img src=" {{asset("assets/img/panier.png")}}">
+		</figure>
+	{% endif %}
 {% endblock %}

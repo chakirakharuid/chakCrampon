@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
+{% block description %}{{produit.description}}{% endblock %}
 
-{% block title %}Accessoires{% endblock %}
+
+{% block title %}{{ produit.nom }}{% endblock %}
+
 
 {% block body %}
 <section id="show">
     <div class="info" >
         <h1>{{ produit.nom }}</h1>
         <p>{{ produit.description }}</p>
-        <a href="{{ path('app_accessoires') }}">
-	        <button class="blackButton">RETOUR</button>
+        <a href="{{ app.request.headers.get('referer') }}">
+	        <button style="height:23px;margin-left:23px;"class="blackButton">RETOUR</button>
         </a>
         <a href="{{ path('app_panier', {'id': produit.id}) }}" class="panier">
-            <i class="fa-solid fa-cart-shopping"></i>
+       <i style="width:8em !important" class="fa-solid fa-cart-shopping"></i>
         </a>
      </div>
  <div class="carte">

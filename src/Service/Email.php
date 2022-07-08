@@ -9,6 +9,7 @@ use Symfony\Component\Mailer\MailerInterface;
 class Email{
 
     private $monmail;
+    
     public function __construct(MailerInterface $mail)
     {
         $this->monmail = $mail;
@@ -19,9 +20,9 @@ class Email{
 
         $email = new TemplatedEmail();
         $email->from($data['email'])
-            ->to('admin@example.com')
+            ->to('chakcrampon@gmail.com')
             ->subject('Un message de la page contact est disponible!')
-            ->text("Le numéro est " . $data['numero'] . "" . "le nom est " . $data['nom']);
+            ->text("Le numéro est " . $data['numero'] . " " . " le nom est " . $data['nom'] ." " ."voici le message :". $data['message']);
         $this->monmail->send($email);
 
 

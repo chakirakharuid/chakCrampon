@@ -1,0 +1,39 @@
+{% extends 'adminBase.html.twig' %}
+
+
+{% block title %}Commandes {% endblock %}
+
+{% block body %}
+    <h1> Les Commandes </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_commande</th>  
+                <th>Utilisateurs</th>
+                <th>Prix_total</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d') : '' }}</td>
+                <td>{{ commande.utilisateur.nom }} {{ commande.utilisateur.prenom }}</td>
+                <td>{{ commande.prixTotal }}</td>
+                <td>
+                    <a href="{{ path('app_admin_comandes_show', {'id': commande.id}) }}" class="btn btn-dark">Voir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_comandes_new') }}" style="margin-left:50px"class="btn btn-dark">Ajouter une nouvelle commande</a>
+{% endblock %}

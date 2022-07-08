@@ -1,4 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
+
 
 {% block title %} Utilisateurs{% endblock %}
 
@@ -7,5 +8,5 @@
 
     {{ include('admin_utilisateurs/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_utilisateurs_index') }}" class="btn btn-dark>Retour à liste</a>
+    <a style="margin-left:100px" href="{{ path('app_admin_utilisateurs_index') }}" class="btn btn-dark">Retour à liste</a>
 {% endblock %}

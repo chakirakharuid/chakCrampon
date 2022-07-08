@@ -1,0 +1,44 @@
+{% extends 'adminBase.html.twig' %}
+
+
+{% block title %}CommandeLigne {% endblock %}
+
+{% block body %}
+    <h1>Toute les commandes  </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>Prix_total</th>
+                <th>numero commande</th>
+                <th>email du client</th>
+                <th>Produits</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_ligne in commande_lignes %}
+            <tr>
+                <td>{{ commande_ligne.id }}</td>
+                <td>{{ commande_ligne.quantite }}</td>
+                <td>{{ commande_ligne.prixTotal }}</td>
+                 <td>{{ commande_ligne.commande }}</td>
+                 <td>{{ commande_ligne.commande.utilisateur }}</td>
+                <td>{{ commande_ligne.produits }}</td>
+                <td>
+                <a style="margin:30px;" href="{{ path('app_admin_commande_ligne_show', {'id': commande_ligne.id}) }} " class="btn btn-dark">Voir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun enregistrement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a style="margin:30px;" href="{{ path('app_admin_commande_ligne_new') }}" class="btn btn-light">Créer une commande</a>
+
+{% endblock %}

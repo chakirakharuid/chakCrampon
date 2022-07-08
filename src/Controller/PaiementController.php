@@ -4,15 +4,17 @@ namespace App\Controller;
 
 use Stripe\Stripe;
 use App\Service\Panier;
-use App\Service\Payement;
+use App\Service\Paiement;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/profil')]
 class PaiementController extends AbstractController
 {
-    #[Route('/profile/payement', name: 'app_payement')]
-    public function index(Payement $paye,Panier $cart): Response
+    #[Route('/paiement', name: 'app_paiement')]
+    public function index(Paiement $paye,Panier $cart): Response
     {
         $total = $cart->voirTotal();
         $paymentIntent=$paye->creer();
@@ -25,14 +27,12 @@ class PaiementController extends AbstractController
     }
 
 
-    #[Route('/profile/payement_success', name: 'app_payement_success')]
-    public function valider(Panier $cart): Response{
-        //On entre les commandes en Basse de données
-
-
-
-
-        //On vide le panier après validation du payement et injection des données en basse
+    #[Route('/paiement_success', name: 'app_paiement_success')]
+    public function valider(Paiement $base,Panier $cart ): Response{
+// Envoie des données de la commande en basse de donnée grace a la méthode envoiBd() présente dans le service paiement
+      $base->envoiBd();
+        
+ //On vide le panier après validation du paiement et injection des données en basse
         $cart->vider();
 
         return $this->render('paiement/paiement_success.html.twig', [

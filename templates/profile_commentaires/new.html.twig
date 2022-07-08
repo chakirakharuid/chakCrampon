@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaire{% endblock %}
+
+{% block body %}
+    <h1>Ajout du Commentaire</h1>
+<div class="container-xl px-4 mt-4">
+       {% include 'navUser.html.twig' %}
+<hr class="mt-0 mb-4">
+{% for message in app.flashes('message')%}
+	<div class="alert alert-success" role="alert">{{message}}
+	</div>
+    {% endfor %}
+    {{ include('profile_commentaires/_form.html.twig') }}
+</div>
+{% endblock %}

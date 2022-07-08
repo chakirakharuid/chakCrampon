@@ -1,4 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
+
 
 {% block title %}Utilisateurs {% endblock %}
 
@@ -39,5 +40,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_utilisateurs_new') }}" class="btn btn-dark">Créer nouveau Profil</a>
+    <a style="margin-left:100px;margin-top:2em;" href="{{ path('app_admin_utilisateurs_new') }}" class="btn btn-dark">Créer nouveau Profil</a>
 {% endblock %}

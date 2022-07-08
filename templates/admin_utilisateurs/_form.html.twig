@@ -1,4 +1,10 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
+
+<section id="form_user_edit">
+    {{ form_start(form) }}
+    <div class="form_user_edit">
+    {{ form_row(form) }}
+   </div>
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
+</section>
+<figure class="img_utilisateur"><img src="{{asset('assets/img/equipe-remove.png')}}" alt="image equipe"></figure>

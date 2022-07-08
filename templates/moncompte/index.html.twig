@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mon compte{% endblock %}
+
+{% block body %}
+     <h1>Mon Profil</h1>
+<div class="container-xl px-4 mt-4">
+{% include 'navUser.html.twig' %}
+	<hr class="mt-0 mb-4">
+	<div class="col-xl-8">
+		<div class="card mb-4">
+			<div class="card-header">Vos informations</div>
+			{% for message in app.flashes('message')%}
+				<div class="alert alert-success" role="alert">{{message}}
+				</div>
+			{% endfor %}
+			<div class="card-body">
+					<div class="mb-3">
+						<label class="small mb-3" for="inputUsername">Votre nom :</label>
+						<p> {{app.user.nom}}</p>
+					</div>
+		
+					<div class="row gx-3 mb-3">
+						<div class="col-md-6">
+							<label class="small mb-3">Votre prénom :</label>
+							<p>{{app.user.prenom}}</p>
+						</div>
+					</div>
+					<div class="row gx-3 mb-3">
+						<div class="col-md-6">
+						<label class="small mb-3">Votre adresse :</label>
+							<p>  {{app.user.adresse}}</p>
+						</div>
+						<!-- Form Group (location)-->
+						<div class="col-md-6">
+							<label class="small mb-3">Ville :</label>
+							<p> {{app.user.ville}}</p>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label class="small mb-3" >Votre email :</label>
+						<p> {{app.user.email}}</p>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+<form method="POST" action="{{ path('app_moncompte_supprimer')}}" onsubmit="return confirm('Etes vous sûr de vouloir supprimer votre compte ?');">
+<button name="delete" class="deleteAccount" type="submit">Supprimer Mon Compte</button>
+</form>
+
+{% endblock %}

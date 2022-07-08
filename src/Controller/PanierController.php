@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ProduitsRepository;
 use App\Service\Panier;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,12 +17,13 @@ class PanierController extends AbstractController
     if (!empty($session->get('panier'))) {
       $cart_full =$cart->lePanier();
       $total=$cart->voirTotal();
+    //   dd($cart_full);
         }else{
       //On déclarre nos variables a 0 pour qu'elles soient prise en compte quoi qu'il arrive
       $cart_full=0;
       $total=0;
-
-        }
+    }
+    // dd($cart_full);
         return $this->render('panier/index.html.twig', [
             'lepanier' => $cart_full,
             'total' => $total
@@ -29,12 +31,24 @@ class PanierController extends AbstractController
         ]);
 
     }
-    #[Route('/panier/{id}', name: 'app_panier')]
-    public function index($id, Panier $cart): Response
+    #[Route('/panier/{id}', name: 'app_panier', methods: ['GET', 'POST'])]
+    public function index($id, Panier $cart, ProduitsRepository $produit): Response
     {
-        $cart->ajouter($id);
+        isset($_POST['taille']) ? $taille = $_POST['taille'] : $taille = null;
+        $product=$produit->find($id);
+        $cart->ajouter($id ,$taille);
+      
+      if (str_contains($product->getNom(), 'Semelle')){
 
-        return $this->redirectToRoute('app_accessoires');;
+        return $this->redirectToRoute('app_matiere');
+      } else if (str_contains($product->getNom(), 'Matière')) {
+
+            return $this->redirectToRoute('app_lacets');
+        }
+
+       else{
+        return $this->redirectToRoute('app_accessoires');
+    }
     }
     #[Route('/vider', name: 'app_vider')]
     public function vider( Panier $cart): Response
@@ -42,10 +56,10 @@ class PanierController extends AbstractController
         $cart->vider();
         return $this->render('panier/index.html.twig', []);
     }
-    #[Route('/supprimer/{id}', name: 'app_supprimer')]
-    public function supprimer($id,Panier $cart): Response
+    #[Route('/supprimer/{id}/{pointure}', name: 'app_supprimer')]
+    public function supprimer($pointure,$id,Panier $cart): Response
     {
-        $cart->supprimerUn($id);
+        $cart->supprimerUn($id,$pointure);
         // on redirige
         return $this->redirectToRoute('app_panier_vu'); 
     }

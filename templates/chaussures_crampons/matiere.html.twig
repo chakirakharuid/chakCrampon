@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% block description %}{% endblock %}
+
+{% block title %}Configuration{% endblock %}
+
+{% block body %}
+<h1>Configuration de votre paire de crampon</h1>
+<h4 class="h4">Veuillez choisir une des matières proposées</h4>
+<section class="accessoires">
+		{% for produit  in produits %}
+			<div class="carte">
+				<div class="imgCard">
+					<img src="{{asset('assets/upload/' ~ produit.image ) }}">
+				</div>
+				<div class="contentCard">
+					<h3>{{ produit.nom }}</h3>
+					<p class="prix">{{ produit.prix }}€</p>
+					<a href="{{ path('app_panier', {'id': produit.id}) }}" class="panier">
+						<i class="fa-solid fa-cart-shopping"></i>
+					</a>
+					<a href="{{ path('app_accessoires_show', {'id': produit.id}) }}">
+						<i style="color:black" class="fa-solid fa-eye"></i>
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+</section>
+<article id="infoMatiere">
+	<section class="cuir">
+		<h3>
+			* Matière Cuir</h3>
+		<div style="width:50%!important" class="alert alert-success mb-0 border border-success mt-4" role="alert">
+			<i class="far fa-check-square"></i>
+			Avantages
+		</div>
+		<ul style="width:50%!important" class="border border-top-0 border-success py-3 pe-3">
+			<li>° Les chaussures en cuir apportent un ajustement maximal au pied, en laissant des espaces sur les zones les plus sujettes à la pression.</li>
+			<li>° Le contact avec le ballon est parfait. On ressent plus de tact en frappant ou en contrôlant la balle. Elles présentent plusieurs points de flexion contrairement au matériel synthétique.</li>
+		</ul>
+		<div style="width:50%!important" class="alert alert-danger mb-0 border border-danger" role="alert">
+			<i class="far fa-times-square"></i>
+			Contre
+		</div>
+		<ul style="width:50%!important" class="border border-top-0 border-danger py-3 pe-3">
+			<li>° Le cuir absorbe l'eau augmentant le poids de la chaussure.</li>
+			<li>° Il reste compliqué de réaliser une chaussure légère avec des matières naturelles.</li>
+		</ul>
+	</section>
+	<section class="synthetique">
+		<h3>* Matière Synthétique et Knit</h3>
+		<div style="width:100%!important" class="alert alert-success mb-0 border border-success mt-4" role="alert">
+			<i class="far fa-check-square"></i>
+			Avantages
+		</div>
+		<ul style="width:100%!important" class="border border-top-0 border-success py-3 pe-3">
+
+			<div>
+				<li>° Poids réduit.<br></li>
+				<li>° Bonne impermialisation</li>
+				<li>° Flexibilité du matériau qui s'adapte au pied.</li>
+				<li>° Option des couleurs illimitées.</li>
+			</div>
+		</ul>
+		<div style="width:100%!important" class="alert alert-danger mb-0 border border-danger" role="alert">
+			<i class="far fa-times-square"></i>
+			Contre
+		</div>
+		<ul style="width:100%!important" class="border border-top-0 border-danger py-3 pe-3">
+			<li>° Le matériau ne s'adapte pas au pied avec l'usure.</li>
+			<li>° Structure peu confortable au pied avec le contact avec le ballon.</li>
+		</ul>
+
+	</section>
+
+
+</article>
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'adminBase.html.twig' %}
+
+
+{% block title %}CommandeLigne{% endblock %}
+
+{% block body %}
+    <h1> Une Ligne de la Commande</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande_ligne.id }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ commande_ligne.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Prix_total</th>
+                <td>{{ commande_ligne.prixTotal }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_commande_ligne_index') }}" class="btn btn-dark">Retour à la liste</a>
+
+    {{ include('admin_commande_ligne/_delete_form.html.twig') }}
+{% endblock %}

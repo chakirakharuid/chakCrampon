@@ -16,28 +16,55 @@ class Panier {
         $this->produitRepository=$produitRepository;
     }
 
-    public function ajouter(int $id){
-          //Cas N1 : Le panier n'existe pas , la session n'existe pas : je créé la session
-        //Cas N2 : Le panier existe , la session existe : je modifie la session
+    public function ajouter(int $id, int $pointure =NULL){
+        // $this->session->remove('panier');
+
+        // dd(1);
+
         $cart =  $this->session->get('panier' , []);
 
-        // Cas N3 : Le panier existe , je rajouter un produit deja existant quantite ++.
-        // si le tableau contient la clé identifiant correspondant au produit
-        // alors je rajoute une quantité ++
-        // si non je suis dans le cas classique
         if (array_key_exists( $id, $cart) ) {
-            $cart[$id] = $cart[$id] + 1 ;
+            $cart[$id] ['quantiteTotal'] = $cart[$id] ['quantiteTotal'] + 1 ;
+            
         }
+        //Sinon le produit nétait pas encore dans le panier 
         else {
         // Ajouter dans le tableau  [] l'identifiant et la quantité = 1
         // $cart[ identifiant du produit  ] = Quantité 1 par défaut
-        $cart[$id] = 1;
-        }
+        $cart[$id] ['quantiteTotal'] = 1;
+
+         $cart[$id]['id'] = $id;
         
-  
-        // on ecrit dans la session nommé 'cart' la variable $cart contenant []
-        // on genere un fichier sur le serveur
-        $this->session->set('panier',$cart);
+        }
+        // dd($cart[$id]);
+       
+       
+        if (isset($pointure)){
+            // 1)lLe produit  ne figure pas encore dans le panier 
+            if (!isset($cart[$id]['pointures'])){
+                
+                $cart[$id]['pointures'][$pointure] = 1 ;
+                
+                //2) Si le produit est present dans le panier avec la meme pointure 
+            } else if (array_key_exists($pointure, $cart[$id]['pointures'])) {
+                $cart[$id]['pointures'][$pointure] = $cart[$id]['pointures'][$pointure] +1;
+                //3) On ajoute le même produit avec une taille différente 
+            } else{
+                $cart[$id]['pointures'][$pointure] = 1;
+            }
+
+        } else {
+            if(isset($cart[$id]['pointures']['aucune'])){
+              $cart[$id]['pointures']['aucune']= $cart[$id]['pointures']['aucune'] + 1;
+            }
+            else{
+              $cart[$id]['pointures']['aucune']=1;
+            }
+      
+        }
+ 
+     $this->session->set('panier',$cart);
+   
  
     }
 
@@ -46,43 +73,33 @@ class Panier {
         $this->session->remove('panier');
     }
 
-    public function lePanier() {
-        
+    public function lePanier():array {
+        if ($this->session->get('panier') != null) {
                // Recuperation du panier
-       // Si il existe on aura le tableau rempli sinon un tableau vide
        $cart=$this->session->get('panier' , []);
-       // EX :  $cart[5]=3    $cart[34]=2    $cart[7]=7
-       /* [  
-          Identifiant produit : 5 , Quantité : 3
-          Identifiant produit : 34 , Quantité : 2
-          Identifiant produit : 7 , Quantité : 7
-         ]
-        */
         // boucle sur le tableau : identifiant_produit => quantité
         // Recuperer les données du produits
-        
-
-        
-            foreach ($cart as $id=>$quantite){
-                //  $cart[5]=3    $cart[34]=2    $cart[7]=7
-            /* 
-            $cart_full[O][produit]=[id=5,nom=chaise,prix=300]
-            $cart_full[O][quantite]=3
-                $cart_full[1][produit]= 
-                $cart_full[1][quantite]=
-                ...
-                */
+    
+            foreach ($cart as $id){
+            $pointureQuantite = [];
+                    foreach ($id['pointures'] as $pointure=> $quantitePointure) {
+                        
+                        $pointureQuantite[$pointure] = $quantitePointure;
+                    }
+              
                 $cart_full[]=[
-                    'product'=> $this->produitRepository->find($id) ,
-                    'quantite'=>$quantite
+                    'product'=> $this->produitRepository->find($id['id']) ,
+                    'quantite'=>$id['quantiteTotal'],
+                    'taille'=>$pointureQuantite
                 ];
-                            
-                // Calcul du TOTAL uniquement
-            //  var_dump($cart_full);
+                // dd($cart_full);
 
-            }                   
+            }
+            // dd($cart_full);
         
-        return $cart_full;
+
+        }
+    return $cart_full;
     }
 
     public function voirTotal(){
@@ -100,20 +117,40 @@ class Panier {
 
     }
     
-    public function supprimerUn(int $id){
+    public function supprimerUn(int $id, string $pointure = null){
         // on recupere le panier en session
         $cart=$this->session->get('panier' , []);
 
-        // on verifie que l'ID est bien présent 
-        // dans le tableau de session
-        if (!empty($cart[$id])){
-            // on supprime du tableau la clé correspondante
+        if ($pointure == null) { // Si le produit à retirer n'a pas de taille
+
+            // Suppression directement de la clé id du produit dans le panier
             unset($cart[$id]);
+
         }
+        if ($pointure != null) {
 
-        // on écrit dans la sessions
+            if (array_key_exists($pointure, $cart[$id]['pointures'])) { // Recherche de la taille à retirer
+
+                // Quantité de la taille à retirer de la quantité totale
+
+                $quantitytoremove = $cart[$id]['pointures'][$pointure];
+
+                $cart[$id]['quantiteTotal'] = $cart[$id]['quantiteTotal'] - $quantitytoremove;
+
+                if ($cart[$id]['quantiteTotal'] == 0) { // Si la quantité du produit dans le panier est à zéro
+
+                    // Suppression dans le panier de la clé du produit et des valeurs correspondantes
+
+                    unset($cart[$id]);
+                } else {
+
+                    // Suppression de la clé de la taille à retirer
+
+                    unset($cart[$id]['pointures'][$pointure]);
+                }
+            }
+         
+        }
         $this->session->set('panier',$cart);
-
-     }
-
+  }
 }

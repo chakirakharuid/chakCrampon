@@ -1,15 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
-{% block title %}Commentaires {% endblock %}
+
+{% block title %}Commentaires index{% endblock %}
 
 {% block body %}
-    <h1>Les Commentaires </h1>
+    <h1>Commentaires </h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Contenu</th>
+                <th>Pseudo</th>
+                <th>Date_commentaire</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,18 +21,19 @@
             <tr>
                 <td>{{ commentaire.id }}</td>
                 <td>{{ commentaire.contenu }}</td>
+                <td>{{ commentaire.Pseudo }}</td>
+                <td>{{ commentaire.dateCommentaire ? commentaire.dateCommentaire|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_admin_commentaires_show', {'id': commentaire.id}) }}" class="btn btn-dark">Voir</a>
-                    <a href="{{ path('app_admin_commentaires_edit', {'id': commentaire.id}) }}" class="btn btn-light">Modifier</a>
+                    <a class="btn btn-dark"href="{{ path('app_admin_commentaires_show', {'id': commentaire.id}) }}">Voir</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">Aucun enregistrement</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_commentaires_new') }}" class="btn btn-dark">Enregistrer un nouveau commentaires</a>
+    <a style="margin-left:20px"class="btn btn-dark" href="{{ path('app_admin_commentaires_new') }}">Ajouter un commentaire</a>
 {% endblock %}

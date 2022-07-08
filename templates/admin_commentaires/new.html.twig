@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
+
 
 {% block title %} Commentaires{% endblock %}
 
 {% block body %}
-    <h1> Commentaires</h1>
+    <h1>Ajout Commentaire</h1>
 
     {{ include('admin_commentaires/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_commentaires_index') }}" class="btn btn-light">Retour à la liste</a>
+  <a style="margin-left:20px"class="btn badge-dark" href="{{ path('app_admin_commentaires_index') }}">Retour à la liste</a>
+
 {% endblock %}

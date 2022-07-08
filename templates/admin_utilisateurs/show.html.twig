@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block title %}Utilisateurs{% endblock %}
 
@@ -34,7 +34,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_utilisateurs_index') }}" class="btn btn-dark">Retour à liste</a>
+    <a style="margin-left:100px" href="{{ path('app_admin_utilisateurs_index') }}" class="btn btn-dark">Retour à liste</a>
 
     <a href="{{ path('app_admin_utilisateurs_edit', {'id': utilisateur.id}) }}" class="btn btn-light">Modifier</a>
 

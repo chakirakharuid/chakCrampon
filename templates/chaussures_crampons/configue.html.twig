@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block description %}{% endblock %}
+
+{% block title %}Configuration{% endblock %}
+
+{% block body %}
+<h1>Configuration de votre paire de crampon</h1>
+<h4 class="h4">Veuillez choisir une des semelles proposées</h4>
+<section class="accessoires">
+{% for produit  in produits %}
+		<div class="carte">
+			<div class="imgCard">
+				<img src="{{asset('assets/upload/' ~ produit.image ) }}">
+			</div>
+			<div class="contentCard">
+				<h3>{{ produit.nom }}</h3>
+				<p class="prix">{{ produit.prix }}€</p>
+				<a href="{{ path('app_panier', {'id': produit.id}) }}" class="panier">
+					<i class="fa-solid fa-cart-shopping"></i>
+				</a>
+				<a href="{{ path('app_accessoires_show', {'id': produit.id}) }}">
+					<i style="color:black" class="fa-solid fa-eye"></i>
+				</a>
+			</div>
+		</div>
+{% endfor %}
+</section>
+<div id="div">
+<div class="infoSemelle">
+    <ul>
+        <li>SEMELLE FG = TERRAIN HERBE</li>
+        <li>SEMELLE SG = TERRAIN GRAS</li>
+        <li>SEMELLE AG = TERRAIN SYNTHÉTIQUE</li>
+        <li>SEMELLE TURF = TERRAIN FOOT À 5, TERRAIN DUR</li>
+    </ul>
+</div>   
+</div> 
+{% endblock %}

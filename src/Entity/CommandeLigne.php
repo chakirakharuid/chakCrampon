@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: CommandeLigneRepository::class)]
 class CommandeLigne
 {
@@ -14,20 +15,24 @@ class CommandeLigne
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-
+    
     #[ORM\Column(type: 'integer')]
     private $quantite;
-
+    
     #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
     private $prix_total;
-
-    #[ORM\OneToMany(mappedBy: 'une_ligne', targetEntity: Commandes::class)]
-    private $commandes;
-
+    
+    
     #[ORM\ManyToOne(targetEntity: Produits::class, inversedBy: 'commandeLignes')]
     #[ORM\JoinColumn(nullable: false)]
     private $produits;
+    
+    #[ORM\ManyToOne(targetEntity: Commandes::class, inversedBy: 'commandeLignes')]
+    private $commande;
 
+    #[ORM\Column(type: 'array', nullable: true)]
+    private $pointure = [ ];
+    
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -62,35 +67,6 @@ class CommandeLigne
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commandes>
-     */
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
-
-    public function addCommande(Commandes $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->setUneLigne($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commandes $commande): self
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getUneLigne() === $this) {
-                $commande->setUneLigne(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getProduits(): ?Produits
     {
@@ -103,4 +79,33 @@ class CommandeLigne
 
         return $this;
     }
+
+    public function getCommande(): ?Commandes
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?Commandes $commande): self
+    {
+        $this->commande = $commande;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->id;
+    }
+
+    public function getPointure(): ? array
+    {
+        return $this->pointure;
+    }
+
+    public function setPointure(?array $pointure): self
+    {
+        $this->pointure = $pointure;
+
+        return $this;
+    }
+
 }

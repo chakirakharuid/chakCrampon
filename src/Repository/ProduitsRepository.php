@@ -8,6 +8,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
+
 /**
  * @method Produits|null find($id, $lockMode = null, $lockVersion = null)
  * @method Produits|null findOneBy(array $criteria, array $orderBy = null)
@@ -43,6 +44,17 @@ class ProduitsRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    public function findCrampon($nom){
+             return $this->createQueryBuilder('p')
+              ->select('p')
+            ->where('p.nom like :nom')
+             ->setParameter(':nom', '%'.$nom.'%')
+             ->getQuery()
+             ->getResult();
+
+
     }
 
     // /**

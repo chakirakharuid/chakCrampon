@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+<div class="small mb-6">
+{{ form_label(form.Pseudo,'Votre pseudo', {'label_attr': {'class':'small mb-1'}}) }}
+<div style="width:20%">
+{{ form_row(form.Pseudo, {'label':false, 'attr': {'class': 'form-control'}}) }}
+</div>
+{{form_label(form.contenu, 'Votre commentaire', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{ form_row(form.contenu, {'label':false, 'attr': {'class': 'form-control'}}) }}
+</div>
+<button style="margin-top:22px" class="blackButton">{{ button_label|default('Envoyer') }}</button>
+{{ form_end(form) }}

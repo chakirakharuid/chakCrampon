@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommandesRepository::class)]
@@ -16,17 +18,25 @@ class Commandes
     #[ORM\Column(type: 'date')]
     private $date_commande;
 
-    #[ORM\Column(type: 'string', length: 30)]
-    private $statut;
 
     #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
     private $prix_total;
 
     #[ORM\ManyToOne(targetEntity: Utilisateurs::class, inversedBy: 'commandes')]
+    #[ORM\JoinColumn(nullable: false)]
     private $utilisateur;
 
-    #[ORM\ManyToOne(targetEntity: CommandeLigne::class, inversedBy: 'commandes')]
-    private $une_ligne;
+
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: CommandeLigne::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private $commandeLignes;
+
+    public function __construct()
+    {
+        $this->commandeLignes = new ArrayCollection();
+    }
+
+   
 
     public function getId(): ?int
     {
@@ -45,17 +55,7 @@ class Commandes
         return $this;
     }
 
-    public function getStatut(): ?string
-    {
-        return $this->statut;
-    }
-
-    public function setStatut(string $statut): self
-    {
-        $this->statut = $statut;
-
-        return $this;
-    }
+   
 
     public function getPrixTotal(): ?string
     {
@@ -81,15 +81,38 @@ class Commandes
         return $this;
     }
 
-    public function getUneLigne(): ?CommandeLigne
+    /**
+     * @return Collection<int, CommandeLigne>
+     */
+    public function getCommandeLignes(): Collection
     {
-        return $this->une_ligne;
+        return $this->commandeLignes;
     }
 
-    public function setUneLigne(?CommandeLigne $une_ligne): self
+    public function addCommandeLigne(CommandeLigne $commandeLigne): self
     {
-        $this->une_ligne = $une_ligne;
+        if (!$this->commandeLignes->contains($commandeLigne)) {
+            $this->commandeLignes[] = $commandeLigne;
+            $commandeLigne->setCommande($this);
+        }
 
         return $this;
+    }
+
+    public function removeCommandeLigne(CommandeLigne $commandeLigne): self
+    {
+        if ($this->commandeLignes->removeElement($commandeLigne)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeLigne->getCommande() === $this) {
+                $commandeLigne->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->id;
     }
 }

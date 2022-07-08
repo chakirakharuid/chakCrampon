@@ -1,0 +1,13 @@
+{% extends 'adminBase.html.twig' %}
+
+
+{% block title %} CommandeLigne{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle Commande (un seul produit)</h1>
+
+    {{ include('admin_commande_ligne/_form.html.twig') }}
+
+ <a style="margin:30px;" href="{{ path('app_admin_commande_ligne_index') }}" class="btn btn-dark">Retour à la liste</a>
+
+{% endblock %}

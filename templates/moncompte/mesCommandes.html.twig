@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mon compte{% endblock %}
+
+{% block body %}
+     <h1>Mes commandes</h1>
+<div class="container-xl px-4 mt-4">
+	{% include 'navUser.html.twig' %}
+	<hr class="mt-0 mb-4">
+	{# {{dump(commandes)}} #}
+	<div class="container-fluid my-5  d-flex  justify-content-center">
+		<div class="card card-1">
+			<div class="card-header bg-white">
+				<div class="media flex-sm-row flex-column-reverse justify-content-between  ">
+					<div class="col my-auto">
+						<h4 class="mb-0">Merci pour vos commandes
+							<span class="change-color">{{app.user.prenom}}</span>
+							!</h4>
+					</div>
+					<div class="col-auto text-center  my-auto pl-0 pt-sm-4">
+						<img class="img-fluid my-auto align-items-center mb-0 pt-3" src="{{asset('assets/img/logoo.png')}}" width="115" height="115">
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				{% set date = ' ' %}
+				{% for commande in commandes %}
+					<div class="row justify-content-between mb-3">
+						<div class="col-auto">
+							{% if date != commande.commande.datecommande %}
+								{% set date = commande.commande.datecommande %}
+								<h6 class="color-1 mb-0 change-color">{{commande.commande.datecommande|date('d/m/Y') }}</h6>
+							{% endif %}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="card card-2">
+								<div class="card-body">
+									<div class="media">
+										<div class="sq align-self-center ">
+											<img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" src="{{asset('assets/upload/' ~ commande.produits.image ) }}" width="135" height="135"/>
+										</div>
+										<div class="media-body my-auto text-right">
+											<div class="row  my-auto flex-column flex-md-row">
+												<div class="col my-auto">
+													<h6 class="mb-0">
+														{{commande.produits.nom}}</h6>
+												</div>
+												{# <div class="col my-auto">
+													<small>Pointure:{{commande.pointure}}</small>
+												</div> #}
+												<div class="col my-auto">
+													<small>Qté:
+														{{commande.quantite}}</small>
+												</div>
+												<div class="col my-auto">
+													<h6 class="mb-0">{{commande.prixtotal}}
+														€</h6>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+
+{% endblock %}

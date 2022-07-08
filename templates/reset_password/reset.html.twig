@@ -1,12 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}Réinitialiser{% endblock %}
+
 
 {% block body %}
-    <h1>Reset your password</h1>
-
+    <h1> Réinitialiser votre mot de passe</h1>
+    <div class="mpCenter">
     {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
+    {{ form_row(resetForm.plainPassword)}}
+        <button style="width:100px;margin-top:50px" class="blackButton">Réinitialiser</button>
     {{ form_end(resetForm) }}
+    </div>
+        <figure class="decoMP">
+         <img src="{{asset('assets/img/cramponchak3.png')}}">
+</figure>
 {% endblock %}
+
+

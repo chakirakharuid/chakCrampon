@@ -1,0 +1,29 @@
+{% extends 'adminBase.html.twig' %}
+
+
+{% block title %}Commandes{% endblock %}
+
+{% block body %}
+    <h1>Commandes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_commande</th>
+                <td>{{ commande.dateCommande ? commande.dateCommande|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prix_total</th>
+                <td>{{ commande.prixTotal }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a  style="margin:10px;" href="{{ path('app_admin_comandes_index') }}" class="btn btn-dark">Retour à la liste</a>
+
+    {{ include('admin_comandes/_delete_form.html.twig') }}
+{% endblock %}

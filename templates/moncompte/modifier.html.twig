@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification {% endblock %}
+
+{% block body %}
+
+<h1>Modification de vos informations</h1>
+
+<div
+	class="container-xl px-4 mt-4">
+	<!-- Account page navigation-->
+	{% include 'navUser.html.twig' %}
+	<hr class="mt-0 mb-4">
+
+	<div
+		class="col-xl-8">
+		<!-- Account details card-->
+		<div class="card mb-4">
+			<div class="card-header">Vos informations</div>
+			<div class="card-body">
+            {{form_start(form)}}
+					<!-- Form Group (username)-->
+					<div class="mb-3">
+                  {{form_label(form.nom, 'Votre nom', { 'label_attr': {'class': 'small mb-1'} }) }}
+                   {{ form_row(form.nom, {'label':false, 'value': user.nom, 'attr': {'class': 'form-control'}}) }}
+                	</div>
+					<!-- Form Row-->
+					<div
+						class="row gx-3 mb-3">
+						<!-- Form Group (first name)-->
+						<div class="col-md-6">
+                    {{form_label(form.prenom, 'Votre prénom', { 'label_attr': {'class': 'small mb-1'} }) }}
+                    {{ form_row(form.prenom, {'label':false, 'value': user.prenom, 'attr': {'class': 'form-control'}}) }}
+						</div>
+					</div>
+					<!-- Form Row        -->
+					<div class="row gx-3 mb-3">
+						<!-- Form Group (organization name)-->
+						<div class="col-md-6">
+{{form_label(form.adresse, 'Votre adresse', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{ form_row(form.adresse, {'label':false, 'value': user.adresse, 'attr': {'class': 'form-control'}}) }}
+
+						</div>
+						<!-- Form Group (location)-->
+						<div class="col-md-6">
+{{form_label(form.ville, 'Votre ville', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{ form_row(form.ville, {'label':false, 'value': user.ville, 'attr': {'class': 'form-control'}}) }}
+						</div>
+					</div>
+					<!-- Form Group (email address)-->
+					<div class="mb-3">
+{{form_label(form.email, 'Votre email', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{ form_row(form.email, {'label':false, 'value': user.email, 'attr': {'class': 'form-control'}}) }}
+
+					</div>
+					<button class="blackButton" type="submit">Modifier</button>
+				{{form_end(form)}}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

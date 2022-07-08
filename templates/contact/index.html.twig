@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block description %}{% endblock %}
 
 {% block title %} Contact{% endblock %}
 
@@ -6,7 +7,18 @@
 
 <h1>Contactez nous</h1>
 <section class="form_contact">
-{{form(form)}}
+{{form_start(form)}}
+<div class="contact_row">
+{{form_label(form.nom, 'Nom', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{form_row(form.nom, {'label':false, 'attr': {'class': 'form-control'}})}}
+{{form_label(form.email, 'Email', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{form_row(form.email,{'label':false, 'attr': {'class': 'form-control'}})}}
+{{form_label(form.numero, 'Numéro', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{form_row(form.numero,{'label':false, 'attr': {'class': 'form-control'}})}}
+{{form_label(form.message, 'Message', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{ form_row(form.message, {'label':false, 'attr': {'class': 'form-control'}}) }}
+{{form_row(form.envoyer)}}
+</div>
 </section>
 <p class="repond">Notre équipe répond dans les 24h</p>
 

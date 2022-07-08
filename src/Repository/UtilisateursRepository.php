@@ -47,7 +47,7 @@ class UtilisateursRepository extends ServiceEntityRepository implements Password
             $this->_em->flush();
         }
     }
-
+ 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */

@@ -50,9 +50,9 @@ class InscriptionController extends AbstractController
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('chakcrampon@example.com', 'chakcramponmessagerie'))
+                    ->from(new Address('chakcrampon@gmail.com', ' Chak crampon'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('Veuillez confirmer votre mail')
                     ->htmlTemplate('inscription/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email

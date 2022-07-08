@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+{% block description %}{{produit.description}}{% endblock %}
+
+{% block title %}{{produit.nom}}{% endblock %}
+
+{% block body %}
+<section id="show">
+	{% set radio1 = 1 %}
+	{% set radio2 = 2 %}
+	{% set radio3 = 3 %}
+	{% set radio4 = 4 %}
+	{% set radio5 = 5 %}
+	{% set radio6 = 6 %}
+	{% set radio7 = 7 %}
+	<div class="info">
+		<h1>{{ produit.nom }}</h1>
+		<p>{{ produit.description }}</p>
+		<a href="{{ app.request.headers.get('referer') }}">
+			<button style="height:21px;margin-left:23px" class="blackButton">RETOUR</button>
+		</a>
+		<form action="{{ path('app_panier', {'id': produit.id})}}" method="POST">
+				<button  class="boutton_panier" type="submit">
+                     <i style="margin-top:55px;margin-left:25px" class="fa-solid fa-cart-shopping"></i>
+                </button>
+			<div class="taille">
+				<h4>Pointure:</h4>
+				<input class="regular_radio" type="radio" id="radio_{{ radio1 }}" name="taille" value="39">
+				<label for="radio_{{ radio1}}">39</label>
+				<input class="regular_radio" type="radio" id="radio_{{ radio2 }}" name="taille" value="40">
+				<label for="radio_{{ radio2 }}">40</label>
+				<input class="regular_radio" type="radio" id="radio_{{ radio3 }}" name="taille" value="41">
+				<label for="radio_{{ radio3 }}">41</label>
+				<input class="regular_radio" type="radio" id="radio_{{ radio4 }}" name="taille" value="42">
+				<label for="radio_{{ radio4 }}">42</label>
+				<input class="regular_radio" type="radio" id="radio_{{ radio5 }}" name="taille" value="43">
+				<label for="radio_{{ radio5 }}">43</label>
+				<input class="regular_radio" type="radio" id="radio_{{ radio6 }}" name="taille" value="44">
+				<label for="radio_{{ radio6 }}">44</label>
+				<input class="regular_radio" type="radio" id="radio_{{ radio7 }}" name="taille" value="45">
+				<label for="radio_{{ radio7 }}">45</label>
+			</div>
+		</div>
+	</form>
+
+	<section class="noscrampons">
+		<div id="noscrampons">
+			<div class="imgCard">
+				<img src="{{asset('assets/upload/' ~ produit.image ) }}">
+			</div>
+			<form action="{{ path('app_panier', {'id': produit.id})}}" method="POST">
+				<div class="contentCard">
+					<h3>{{ produit.nom }}</h3>
+					<p class="prix">{{ produit.prix }}€</p>
+					<div class="i">
+						<button class="boutton_panier" type="submit">
+							<i class="fa-solid fa-cart-shopping"></i>
+						</button>
+					</div>
+					<div class="taille">
+						<h4>Pointure:</h4>
+						<input class="regular_radio" type="radio" id="radio_{{ radio1 }}" name="taille" value="39">
+						<label for="radio_{{ radio1}}">39</label>
+						<input class="regular_radio" type="radio" id="radio_{{ radio2 }}" name="taille" value="40">
+						<label for="radio_{{ radio2 }}">40</label>
+						<input class="regular_radio" type="radio" id="radio_{{ radio3 }}" name="taille" value="41">
+						<label for="radio_{{ radio3 }}">41</label>
+						<input class="regular_radio" type="radio" id="radio_{{ radio4 }}" name="taille" value="42">
+						<label for="radio_{{ radio4 }}">42</label>
+						<input class="regular_radio" type="radio" id="radio_{{ radio5 }}" name="taille" value="43">
+						<label for="radio_{{ radio5 }}">43</label>
+						<input class="regular_radio" type="radio" id="radio_{{ radio6 }}" name="taille" value="44">
+						<label for="radio_{{ radio6 }}">44</label>
+						<input class="regular_radio" type="radio" id="radio_{{ radio7 }}" name="taille" value="45">
+						<label for="radio_{{ radio7 }}">45</label>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+{% endblock %}

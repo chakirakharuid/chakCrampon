@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Utilisateurs;
 use App\Entity\CommandeLigne;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method CommandeLigne|null find($id, $lockMode = null, $lockVersion = null)
@@ -44,6 +45,21 @@ class CommandeLigneRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+//       public function mesCommandes()
+//       {
+//            return $this->createQueryBuilder('l')
+//                 ->select('l')
+//                 ->join('l.commande', 'c')
+//                 ->join('c.utilisateur', 'u')
+//                 ->join('l.produits', 'p')
+//                 ->where('c.utilisateur = :id')
+//                 ->setParameter('id','id')
+//                 ->getQuery()
+//                 ->getResult();
+
+
+//    }
 
     // /**
     //  * @return CommandeLigne[] Returns an array of CommandeLigne objects

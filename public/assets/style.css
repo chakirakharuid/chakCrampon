@@ -1,5 +1,4 @@
 
-
 *{
     margin: 0;
     padding: 0;
@@ -7,10 +6,17 @@
 }
 
  /*HEADER*/
+/*BARRE NAV*/
+.crampon1{
+display: block;
+
+}
+.crampon2{
+display: none;
+}
 
 #navigation{
     width: 100%;
-    margin: 10px 10px 10px 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,7 +25,7 @@
 }
 
 #navigation > figure {
-        padding-left: 10px;
+     padding-left: 10px;
         
 }
 
@@ -103,31 +109,27 @@ display: block;
 /*BODY*/
 body{
     margin: 0;
+    width: 100%;
 }
 
 h1 {
     text-align: center;
      font-family: 'Alfa Slab One', cursive;
-     margin-bottom: 2em;
+     margin-bottom: 0.5em;
  }
 main{
     min-height: 650px;
 }
 p{
  font-family: 'Libre Bodoni', serif;
+ margin-left:25px;
 }
 h2{
     color: #9a90c2;
    font-family: 'Bebas Neue', cursive;
    text-align: center;
 }
-h4{
-    font-family: 'Alfa Slab One', cursive;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 200px;
-    margin-top: 250px;
-}
+
 /*QUI SOMMES NOUS*/
 .description {
     background-color: whitesmoke;
@@ -138,11 +140,19 @@ h4{
     margin-top: 20px;
     margin-bottom: 5em;
 }
+
 .img_nous{
     margin-right: 2em;
     margin-left: 5em;
     margin-top: 15px;
-    
+    border-radius: 25px;
+    background-color: #111;
+    overflow: hidden;
+
+}
+.img_nous img{
+    object-fit: cover;
+    width: 100%;
 }
 #qui_sommes{
     display: flex;
@@ -150,6 +160,7 @@ h4{
 }
 
 /*CONTACT*/
+
 .form_contact{
     display: flex;
     justify-content: center;
@@ -159,26 +170,30 @@ h4{
     margin-left: 200px;
 }
 .form_contact form{
-    background-color:  #9A90C2;
+    background-color:  #9a90c296;
     border-radius: 20px;
-    height: 20em;
+    height: 24em;
     margin-top: 80px;
     width: 500px;
     display: flex;
     justify-content: center;
     padding-top: 5em;
 }
+.contact_row{
+display: flex;
+flex-direction: column;
+margin-top: -55px;
 
+
+}
 .form_contact form input{
    display: flex;
    justify-content: center;
    padding-top: 10px;
-
    
 }
 .form_contact form button{
    margin-top: 1em;
-   /* border-style:outset; */
    border-radius: 2vh;
    background-color:black;
    color: #f9f9f9;
@@ -189,6 +204,81 @@ h4{
     text-align: center;
     margin-top: 10px;
 }
+.imgP{
+    display:flex;
+    justify-content: center;
+
+}
+/*ON PARLE DE NOUS (Commentaire)*/
+
+.commentaire{
+    margin-left: 5.5em;
+    color: green;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #FFFFFF;
+}
+
+.blog-comment .post-comments{
+	border: 1px solid #eee;
+    margin-bottom: 20px;
+    margin-left: 85px;
+	margin-right: 0px;
+    padding: 10px 20px;
+    position: relative;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+       	 -o-border-radius: 4px;
+    		border-radius: 4px;
+	background: #fff;
+	color: #6b6e80;
+	position: relative;
+}
+
+.blog-comment .meta {
+	font-size: 13px;
+	color: #aaaaaa;
+	padding-bottom: 8px;
+	margin-bottom: 10px !important;
+	border-bottom: 1px solid #eee;
+}
+
+.blog-comment ul.comments ul{
+	list-style-type: none;
+	padding: 0;
+	margin-left: 85px;
+}
+.pseudo{
+    margin-left: 1.5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.blog-comment-form{
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-top: 40px;
+}
+
+/*BLOG*/
+
+.blog{
+    width: 70%;
+    margin-left: 200px;
+}
+.paraBlog{
+    border: 1px solid gray;
+    border-radius: 2em;
+    margin-top: 50px;
+    padding: 12px;
+}
+.paraBlog h2{
+    margin-bottom: 15px;
+}
+
 
 /*INSCRIPTION*/
 #inscription{
@@ -196,13 +286,13 @@ h4{
     justify-content: center;
     border-radius: 30px;
     background-color: whitesmoke;
-    height: 650px;
+    height: 800px;
     width: 70%;
     margin-left: 220px;
 }
 .form_inscri{
 background-color: #9EC49F;
-width: 50%;
+width: 85%;
 margin:5em;
 border-radius: 20px;
 display: flex;
@@ -210,14 +300,20 @@ justify-content: center;
 
 }
 .form_inscri input{
-    display: flex;
-    flex-direction: row;
-    margin-top: 12px;
-    
+    width: 50% !important;
+    margin-left: 180px;
+    margin-top: 10px;
 }
 .form_inscri label{
-    padding-top: 12px;
+    margin-left: 180px;
+
 }
+.form_inscri form li{
+    color:red;
+}
+
+
+
 
 #inscription .blackButton{
     background-color: black;
@@ -237,12 +333,16 @@ justify-content: center;
     margin-left: 200px;
     display: flex;
     justify-content: center;
-    height: 350px;
+    height: 420px;
+}
+.button a {
+    text-decoration: none;
+    color: #f9f9f9;
 }
 
 .form_conn{
-    background-color:rgba(0, 55, 255, 0.779) ;
-    width: 35%;
+    background-color:#a5be42;
+    width: 41%;
    border-radius: 2em;
     margin:2em
 }
@@ -260,6 +360,201 @@ justify-content: center;
     margin-top: 30px;
     margin-left: 10px;
     margin-right: 10px;
+}
+.input input{
+    width: 85% !important;
+}
+/*CHAUSSURES CRAMPON*/
+.i{
+    display: flex;
+    flex-direction: row;
+    padding: 14px;
+}
+.i a i{
+    color: #111;
+    margin-left: 12px;
+}
+.noscrampons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+}
+#noscrampons{
+  position: relative;
+    width: 360px;
+    height: 440px;
+   background:#9ec49f57;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 2em;
+    margin-left: 20px;
+}
+#noscrampons::before{
+    content: '';
+position: absolute;
+top:-50%;
+width: 100%;
+height: 100%;
+background: #9a90c28c;
+transform: skewY(345deg);
+transition: 0.5s;
+}
+#noscrampons:hover::before{
+  top:-70%;
+ transform: skewY(390deg);
+}
+#noscrampons::after{
+    top:70%;
+}
+#noscrampons .imgCard{
+position:relative;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 20px;
+z-index: 1;
+}
+#noscrampons .imgCard img{
+    width:100% ;
+    transition: 0.5s;
+}
+#noscrampons:hover .imgCard img{
+max-width: 50%;
+}
+
+#noscrampons .contentCard{
+    position: relative;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+.taille,
+.color{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:8px 20px;
+    transition: 0.5s;
+}
+.taille h4,
+.color h4{
+font-weight: 300;
+font-size: 14px;
+text-transform: uppercase;
+letter-spacing: 2px;
+margin-right:10px ;
+}
+.taille label {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    color: #111;
+   background: #fff;
+   margin: 0 5px;
+   transition: 0.5s;
+   color: #111;
+   border-radius: 4px;
+   cursor: pointer;
+}
+.taille label:hover{
+    background: #9bdc28;
+}
+
+.taille input{
+    display: none;
+}
+.boutton_panier{
+    background: none;
+    border: none;
+   
+}
+.regular_radio:checked + label {
+ background: #9bdc28;
+ color:white;
+
+}
+
+/* REINITIALISATION MP*/
+.login{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+.login p{
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.decoMP img {
+width: 100%;
+}
+.mpCenter{
+    display: flex;
+    justify-content: center;
+}
+
+.mpCenter input{
+    width: 100% !important;
+}
+
+/*CRAMPON PERSO*/
+.h4{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 15px;
+    background-color: #9bdc28;
+    width: 50%;
+    margin-left: 300px;
+    text-align: center;
+    border-radius: 1em;
+}
+.infoSemelle{
+    border: 0.5px solid yellow;
+    background-color: rgba(255, 255, 0, 0.343);
+    width: 30%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+.infoSemelle ul li {
+    margin-top: 8px;
+    font-family:'Oswald', sans-serif; ;
+}
+#div{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.cuir{
+    margin-left: 100px;
+    margin-top:25px;
+}
+.cuir h3{
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration:underline;
+}
+#infoMatiere{
+    display: flex;
+    flex-direction: row;
+}
+.synthetique{
+    margin-right: 200px;
+    margin-top:25px;
+}
+.synthetique h3{
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration:underline;
 }
 
 /*ACCESSOIRES*/
@@ -290,7 +585,7 @@ transition: 0.5s;
 
 }
 .carte::after{
-top:-70
+top:-70;
 
 }
 .carte .imgCard{
@@ -393,7 +688,35 @@ margin-bottom: 40px;
     width: 5em;
     
 }
+/*PANIER*/
 
+.recap{
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+}
+#lepanier{
+    display: flex;
+    flex-direction: row;
+}
+.r{
+    display: flex;
+    flex-direction: column;
+     width: 50%;
+     padding: 2em;
+}
+.prix{
+    display: flex;
+    flex-direction: row;
+}
+ .ficheP{
+   background-color: whitesmoke;
+   width: 70%;
+    margin-left: 100px;
+    padding: 1em 1em;
+    border-radius: 20px;
+    margin-top: 1em;
+ }
 /*FOOTER*/
 .footer{
 background-color:black;
@@ -402,6 +725,7 @@ flex-direction: row;
 justify-content: space-around;
 height: 80px;
 margin-top: 18px;
+width:100%;
 }
 
 .footer a{
@@ -416,6 +740,51 @@ margin-top: 18px;
     justify-content: space-between;
 }
 
+.politiques{
+    text-align: center;
+    width: 70%;
+    margin-left: 150px;
+}
+.politiques h5{
+    color:#9285c4 ;
+        text-align: center;
+        letter-spacing: 2px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-top: 20px;
+}
+.politiques p{
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+.politiques ul li{
+     font-size: 18px;
+}
+.poliques ul{
+    font-size: 22px;
+}
+.cookie{
+    font-weight: bold;
+
+}
+.cgv{
+    text-align: center;
+}
+.mentions{
+     white-space: pre-line;
+    font-size: 22px; 
+    text-align: center;
+}
+.cgv p{
+    white-space: pre-line;
+    font-size: 18px;
+}
+.cgv h5{
+    color: #9285c4;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+}
 
 /*ADMIN AND USER
 /*ADMIN FORMULAIRE PRODUITS*/
@@ -438,6 +807,15 @@ margin-top: 18px;
     flex-direction: column;
 }
 
+
+.coments{
+padding: 20px;
+margin: 20px;
+}
+
+.coments input{
+margin: 15px;
+}
 .form_produits label{
     display: flex;
     flex-direction: column;
@@ -450,12 +828,275 @@ margin-top: 18px;
     margin-top: 60px;
     
 }
+/*ADMIN NAVBARRE*/
+.navAdmin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(128, 128, 128, 0.309);
+    margin-bottom: 10px;
+}
+.navAdmin img{
+    margin-bottom: 10px;
+}
+.navAdmin li a {
+    text-decoration: none;
+    color: #111;
+    font-size: 22px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.navAdmin li a:hover{
+    background-color:#2045af ;
+    color: white;
+}
+.navAdmin li{ 
+    margin-top: 100px;
+    margin-left: -45px;
 
-/*ROLE USER formulaire paiement*/
-.payer form{
-    width: 800px;
-    height: 450px;
+}
+.adminMain{
+    min-height: 500px;
+}
+.acceuil{
+text-align: center;
+}
+.acceuilP{
+    font-size: 18px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+/*ADMIN FORMULAIRE UTILISATEURS*/
+.form_user_edit {
     display: flex;
     justify-content: center;
     
 }
+.form_user_edit label{
+    display:flex;
+    flex-direction: column;
+}
+
+#form_user_edit{
+    width: 50%;
+    background-color: #9EC49F;
+    margin:20px;
+}
+.img_utilisateur{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -380px;
+}
+
+/*USER MON COMPTE*/
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+    font-weight: 500;
+}
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69707a;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c5ccd6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nav-borders .nav-link.active {
+    color: grey;
+
+}
+.nav-borders .nav-link {
+    color: #69707a;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.deleteAccount{
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    width: 15%;
+    background-color: red;
+    color:white;
+    margin-left: 130px;
+    text-decoration: none;
+    margin-top: 35px;
+}
+.form-control{
+    width: 25% !important;
+}
+.deleteAccount:hover{
+    color: black;
+}
+/*MES COMMANDES USERS*/
+
+ .container-fluid {
+            margin-top: 200px ;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 7px;
+
+        }
+
+        .small {
+            letter-spacing: 0.5px !important;
+        }
+
+        .card-1 {
+            box-shadow: 2px 2px 10px 0px rgb(190, 108, 170);
+        }
+
+        hr {
+            background-color: rgba(248, 248, 248, 0.667);
+        }
+
+
+        .bold {
+            font-weight: 500;
+        }
+
+        .change-color {
+            color: #AB47BC !important;
+        }
+
+        .card-2 {
+            box-shadow: 1px 1px 3px 0px rgb(112, 115, 139);
+
+        }
+
+        .fa-circle.active {
+            font-size: 8px;
+            color: #AB47BC;
+        }
+
+        .fa-circle {
+            font-size: 8px;
+            color: #aaa;
+        }
+
+        .rounded {
+            border-radius: 2.25rem !important;
+        }
+
+
+        .progress-bar {
+            background-color: #AB47BC !important;
+        }
+
+        .progress {
+            height: 5px !important;
+            margin-bottom: 0;
+        }
+
+        .invoice {
+            position: relative;
+            top: -70px;
+        }
+
+        .Glasses {
+            position: relative;
+            top: -12px !important;
+        }
+
+        .card-footer {
+            background-color: #AB47BC;
+            color: #fff;
+        }
+
+        h2 {
+            color: rgb(78, 0, 92);
+            letter-spacing: 2px !important;
+        }
+
+        .display-3 {
+            font-weight: 500 !important;
+        }
+
+        @media (max-width: 479px) {
+            .invoice {
+                position: relative;
+                top: 7px;
+            }
+
+            .border-line {
+                border-right: 0px solid rgb(226, 206, 226) !important;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            h2 {
+                color: rgb(78, 0, 92);
+                font-size: 17px;
+            }
+
+            .display-3 {
+                font-size: 28px;
+                font-weight: 500 !important;
+            }
+        }
+
+        .card-footer small {
+            letter-spacing: 7px !important;
+            font-size: 12px;
+        }
+
+        .border-line {
+            border-right: 1px solid rgb(226, 206, 226)
+        }
+
+
+
+
+
+/*RESPONSIVE */
+/*MEDIA QUERY*/
+
+/* @media (max-width: 1024px) {
+.crampon1{
+    display: none;
+}
+.crampon2{
+    display: block;
+}
+} */
+/* @media (min-width: 320px) {
+     #navigation .nav a {
+    color:blue;
+    } */
+    
+

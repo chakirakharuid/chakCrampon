@@ -20,6 +20,10 @@ class AdminProduitsController extends AbstractController
         return $this->render('admin_produits/index.html.twig', [
             'produits' => $produitsRepository->findAll(),
         ]);
+    }  #[Route('/acceuil', name: 'app_admin_acceuil')]
+    public function acceuil(): Response
+    {
+        return $this->render('admin_produits/acceuil.html.twig');
     }
 
     #[Route('/new', name: 'app_admin_produits_new', methods: ['GET', 'POST'])]

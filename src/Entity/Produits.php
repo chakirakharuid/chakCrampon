@@ -38,9 +38,7 @@ class Produits
     #[ORM\OneToMany(mappedBy: 'produits', targetEntity: CommandeLigne::class)]
     private $commandeLignes;
 
-    #[ORM\Column(type: 'integer')]
-    private $taille;
-
+ 
 
 
 
@@ -160,19 +158,12 @@ class Produits
         return $this;
     }
 
-    public function getTaille(): ?int
+
+
+    public function __toString()
     {
-        return $this->taille;
+        return $this->nom;
     }
-
-    public function setTaille(int $taille): self
-    {
-        $this->taille = $taille;
-
-        return $this;
-    }
-
-   
 
 
 }
