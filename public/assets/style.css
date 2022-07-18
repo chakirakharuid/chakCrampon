@@ -182,10 +182,16 @@ h2{
 .contact_row{
 display: flex;
 flex-direction: column;
+margin-left: 100px;
 margin-top: -55px;
-
-
+width: 100%;
 }
+.contact_row input , textarea{
+    width: 60% !important;
+}
+
+
+
 .form_contact form input{
    display: flex;
    justify-content: center;
@@ -298,6 +304,11 @@ border-radius: 20px;
 display: flex;
 justify-content: center;
 
+}
+.rgpd label{
+    display: flex;
+    justify-content: center;
+  margin-right: 150px;
 }
 .form_inscri input{
     width: 50% !important;

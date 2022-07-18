@@ -26,7 +26,8 @@ class PanierController extends AbstractController
     // dd($cart_full);
         return $this->render('panier/index.html.twig', [
             'lepanier' => $cart_full,
-            'total' => $total
+            'total' => $total,
+            
           
         ]);
 
