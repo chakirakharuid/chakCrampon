@@ -4,6 +4,11 @@
 {% block title %} Accessoires{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('panier')%}
+	<div class="alert alert-success col-6 mx-auto" role="alert">{{message}}
+	</div>
+{% endfor %}
+
  <h1>Nos Accessoires </h1>
 <section class="accessoires">
 {% for produit in produits %}

@@ -1,10 +1,14 @@
 <header class="top_header">
 	<nav id="navigation" >
 		<figure>
-				<a href="{{ path('app_home') }}">
-               <img src="{{asset('assets/img/logoo.png')}}" alt="logo"></a>
+			<a href="{{ path('app_home') }}">
+            <img src="{{asset('assets/img/logoo.png')}}" alt="logo"></a>
 		</figure>
-		<ul class="nav">
+		<div class="toggle">
+		     <i class="fas fa-bars ouvrir"></i>
+		     <i class="fas fa-times close"></i>
+		</div>	 
+		<ul class="navi">
 		{% if  is_granted('ROLE_ADMIN') %}
 					<li >
 						<a href="{{ path('app_admin_acceuil') }}">ADMIN</a>
@@ -15,8 +19,7 @@
 			</li>
 			<div class="dropdown">
 				<li class="dropbtn">
-					<a class="crampon1" href="">Chaussures crampons/<br>
-					    Crampons personnalisables</a>
+					<a class="crampon1" href="">Crampons/personnalisation</a>
 					<a class="crampon2" href="">Crampons</a>
 				</li>
 				<div class="dropdown-content">
@@ -34,7 +37,18 @@
 		<li>
 			<a href="{{ path('app_contact') }}">Contact</a>
 		</li>
+		<li>
+			<a href="{{ path('app_blog') }}">Blog</a>
+		</li>
+		{% set quantite = 0 %}
+		{% for panier in app.session.get('panier') %}
+	
+		{% set quantite = quantite + panier.quantiteTotal %}
+		{% endfor %}
 		<li id="panier">
+				{% if quantite != 0 %}
+		     <span class="nbrQuantite">{{quantite}}</span>
+			      {% endif %}
 			<a href="{{ path('app_panier_vu')}}" title="panier">
 				<i class="fa-solid fa-cart-shopping"></i>
 			</a>
@@ -57,13 +71,10 @@
 			<li>
 				<a href="{{ path('app_moncompte') }}">
 				Mon Compte
-					{# <i title="deconnexion" class="fa-solid fa-arrow-right-from-bracket"></i> #}
 				</a>
 			</li>
 		{% endif %}
-		<li>
-			<a href="{{ path('app_blog') }}">Blog</a>
-		</li>
+	
 	</ul>
 		</nav>
         {% if is_granted ('ROLE_USER') %}

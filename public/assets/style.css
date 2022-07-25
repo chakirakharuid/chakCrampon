@@ -15,6 +15,20 @@ display: block;
 display: none;
 }
 
+.nbrQuantite{
+    width:20px;
+    height:20px;
+    color:#9285c4;
+    margin-left:7px;
+    display:block;
+    position:absolute;
+    top:-13px;
+}
+
+#panier{
+    position:relative;
+}
+
 #navigation{
     width: 100%;
     display: flex;
@@ -29,9 +43,6 @@ display: none;
         
 }
 
-#navigation > ul {
-    width: 100%;
-}
 
 #navigation>ul li {
     margin-left: 20px;
@@ -47,7 +58,7 @@ display: none;
 width: 100%;
 background-color:white;
 }
-.nav{
+.navi{
     display: flex;
     flex-direction:row;
     
@@ -67,15 +78,20 @@ font-family: inherit;
 margin: 0;
 }
 
-.nav a:hover{
+.navi a:hover{
 background-color:#9EC49F ;
 }
 .none a:hover{
     background-color: white;
+
 }
+.none a i:hover{
+ color:#9EC49F;
+}
+
 #panier  a:hover{
     background-color: white;
-    color: green;
+    color: #9EC49F;
 }
 .dropdown-content {
 display: none;
@@ -186,10 +202,12 @@ margin-left: 100px;
 margin-top: -55px;
 width: 100%;
 }
-.contact_row input , textarea{
+.contact_row input{
     width: 60% !important;
 }
-
+.contact_row textarea{
+    width: 80% !important;
+}
 
 
 .form_contact form input{
@@ -292,38 +310,37 @@ width: 100%;
     justify-content: center;
     border-radius: 30px;
     background-color: whitesmoke;
-    height: 800px;
     width: 70%;
-    margin-left: 220px;
+    margin:0 auto;
 }
 .form_inscri{
 background-color: #9EC49F;
-width: 85%;
-margin:5em;
+width: 90%;
+margin:15px auto;
 border-radius: 20px;
 display: flex;
 justify-content: center;
+
 
 }
 .rgpd label{
     display: flex;
     justify-content: center;
-  margin-right: 150px;
+  margin: 0 auto;
 }
 .form_inscri input{
     width: 50% !important;
-    margin-left: 180px;
-    margin-top: 10px;
+    margin: 0 auto;
 }
 .form_inscri label{
-    margin-left: 180px;
+    display: flex;
+   justify-content: center;
 
 }
 .form_inscri form li{
     color:red;
+    font-size: 12px;
 }
-
-
 
 
 #inscription .blackButton{
@@ -331,8 +348,9 @@ justify-content: center;
     border-radius: 2vh;
     color: #f9f9f9;
     height: 40px;
-    margin-top: 18em;
     width: 5em;
+    margin: 20px 20px;
+    
 }
 
 /*CONNEXION*/
@@ -525,7 +543,7 @@ width: 100%;
     margin-top: 15px;
     background-color: #9bdc28;
     width: 50%;
-    margin-left: 300px;
+    margin:0 auto;
     text-align: center;
     border-radius: 1em;
 }
@@ -722,12 +740,26 @@ margin-bottom: 40px;
 }
  .ficheP{
    background-color: whitesmoke;
-   width: 70%;
+    width: 60%;
     margin-left: 100px;
     padding: 1em 1em;
     border-radius: 20px;
     margin-top: 1em;
  }
+
+ .nbrPanier{
+    color: orangered;
+    font-weight: bold;
+ }
+
+.panierP{
+    margin-left: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:1em;
+}
+
+
+
 /*FOOTER*/
 .footer{
 background-color:black;
@@ -744,7 +776,7 @@ width:100%;
     text-decoration: none;
 }
 .reseaux{
-    width: 280px;
+    width:30%;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -754,7 +786,7 @@ width:100%;
 .politiques{
     text-align: center;
     width: 70%;
-    margin-left: 150px;
+    margin:0 auto;
 }
 .politiques h5{
     color:#9285c4 ;
@@ -797,8 +829,176 @@ width:100%;
     margin-top: 20px;
 }
 
+.cookie-popup {
+    transition: 0.3s;
+    z-index: -999;
+    pointer-events: none;
+    opacity: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    height: auto;
+}
+
+#bandeau_cookie{
+    z-index: 1999;
+    pointer-events: auto;
+    opacity: 1;
+    max-width: 100vw;
+    margin: auto;
+    background: #333;
+    box-shadow: 1px 1px 18px rgba(0, 0, 0, 0.19);
+    transition: 0.3s;
+    padding: 10px;
+   text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    height: auto;
+}
+
+.cookie_spacer{
+    margin-bottom: 5px;
+}
+.container_cookie-btn{
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    float: none !important;
+    box-sizing: border-box;
+}
+.cookie_text{
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.btn-advanced{
+    display: inline-block;
+    width: auto;
+    padding: 3px;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 22px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0.4px;
+}
+
+.btn-advanced:nth-child(1) {
+    background: #32cd32;
+    color: #fff;
+    border: 1px solid #32cd32;
+  }
+  .btn-advanced:nth-child(3) {
+    background: #828282;
+    color: #333;
+    border: 1px solid #828282;
+    margin-left: 5px;
+  }
+  #personnalize_my_cookie {    
+    margin-left: 5px !important;
+  }
+
+
+.cookie_deactivate{
+    display: none;
+}
+
+
+  .format_div_rgpd{
+      padding : 2em;
+  }
+
+  .format_div_rgpd h2, .format_div_rgpd h3{
+      font-size: 14px;
+  }
+
+  .format_div_rgpd h1{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+.gestion_cookie-div{
+    margin : 20px auto;
+    text-align: right;
+}
+
+
+
+.gestion_cookie-div-text{
+    
+    padding: 1em;
+}
+
+.separator_section{
+    border-bottom: 1px solid black;
+    width: 20em;
+    margin: auto;
+}
+
+.gestion_cookie-div-text p {
+    text-align: justify;
+}
+.gestion_cookie-div-text h2 {
+    text-align: center;
+}
+
+
+.btn_cookie{
+    padding: 10px;
+width: 35%;
+border: 0;
+border-radius: 5px;
+color : white;
+}
+
+
+.accept:hover{
+    background: #4596ec !important;
+}
+
+.refuse:hover{
+    background: #e52e2f !important;
+}
+
+.deny{
+background: #5a5e6b !important;
+color : white;
+}
+
+.refuseAnswer{
+    background: #e52e2f ;
+    
+}
+
+.acceptAnwser{
+    background: #4596ec;
+}
+
+.bouton_gestion_cookies:hover{
+    cursor: pointer;
+    text-decoration: underline !important;
+}
+
 /*ADMIN AND USER
-/*ADMIN FORMULAIRE PRODUITS*/
+/*ADMIN FORMULAIRE PRODUITS ET ACCEUIL*/
+
+
+.photoAcceuil{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+}
+.photoAcceuil img{
+    width:30%;
+}
 .form_produits{
     display: flex;
    flex-direction: row;
@@ -971,6 +1171,9 @@ text-align: center;
     color: black;
 }
 /*MES COMMANDES USERS*/
+.toggle{
+    display:none;
+}
 
  .container-fluid {
             margin-top: 200px ;
@@ -1096,18 +1299,275 @@ text-align: center;
 
 /*RESPONSIVE */
 /*MEDIA QUERY*/
+ @media (max-width: 1155px){
+#lepanier{
+    display:flex;
+    flex-direction:column;
+    align-items: CENTER;
 
-/* @media (max-width: 1024px) {
+}
+
+
+ }
+
+ @media (max-width: 1024px) {
 .crampon1{
     display: none;
 }
 .crampon2{
     display: block;
 }
-} */
-/* @media (min-width: 320px) {
-     #navigation .nav a {
-    color:blue;
-    } */
-    
+} 
 
+.r{
+    display:flex;
+    justify-content:center;
+}
+
+
+@media all and (max-width:790px){
+.form_contact{
+   margin:auto;
+}
+.contact_row{
+    width: 100%;
+}
+
+.contact_row textarea{
+    width: 85% !important;
+}
+#navigation img{
+    width: 75%;
+}
+.h4{
+    text-align: center;
+    margin:65px;
+    display: flex;
+    justify-content: center;
+}
+#inscription{
+    width: 80%;
+    margin-left:10px;
+}
+/* .form_inscri{
+display: flex;
+flex-direction: column;
+}
+.form_inscri input{
+width: 50%;
+margin: 0;
+} */
+
+}
+@media all and (max-width:997px){
+.toggle{
+     display:block;
+     font-size:2em;
+     cursor:pointer;
+     position:relative!important;
+     z-index:20!important;
+
+}  
+
+#navigation img{
+    position:relative;
+    z-index:20;
+}
+.ouvrir{
+    display: block;
+}
+.ficheP{
+    width:100%;
+}
+
+.close{
+    display:none!important;
+     margin-left: 80px;
+     position:relative !important;
+     z-index:9999 !important;
+}
+.nbrQuantite{
+    color:white;
+}
+.open .ouvrir{
+    display:none;
+    z-index:9999 !important;
+    position:absolute !important;
+}
+.open .close{
+    display: block !important;
+    position:relative !important;
+    margin-left: 80px;
+}
+.login input{
+    width:100% !important;
+}
+.navi{
+    position:absolute;
+    top:0;
+    left:0;
+    height:80%;
+    width:283px;
+    flex-direction:column;
+    padding:20px;
+    background:rgb(0, 0, 0);
+    justify-content: space-around;
+    z-index:20;
+    transform: translateX(-100%);
+    transition: transform 1s;
+}
+.navi li a{
+    color: white!important;
+    font-size: 22px!important;
+    margin-left:10px;
+
+
+}
+.blog{
+    margin:0;
+}
+
+.paraBlog{
+
+    margin-left:100px;
+}
+.form_conn{
+    width:100%;
+    margin-left:0;
+}
+.connexion{
+    margin-left:80px;
+}
+
+.open .navi{
+    transform:translateX(0);
+}
+#qui_sommes{
+    display: flex;
+    flex-direction: column;
+}
+.description{
+    width: 90%;
+}
+
+#show{
+    display: flex;
+    flex-direction: column;
+}
+
+#infoMatiere{
+    display: flex;
+    flex-direction: column;
+}
+.synthetique{
+    margin-left:50px;
+
+}
+
+
+
+  }  
+
+
+@media all and (max-width:561px){
+#show{
+    width: 100%;
+}
+.info p{
+    width: 100%;
+}
+.card-body input{
+    width: 100% !important;
+}
+.small input{
+    width: 100% !important;
+}
+.deleteAccount{
+    width:80%;
+    margin-left:20px;
+}
+.mb-3 input{
+    width: 80% !important;
+}
+
+
+.blog{
+    width: auto;
+}
+.paraBlog{
+    margin:0 auto;
+    width: 90%;
+    margin-top: 10px;
+
+}
+.point {
+    display:none;
+}
+
+.taille h4{
+    display:none;
+}
+
+.info p{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ficheP{
+    width:100%;
+}
+#inscription{
+    width: 100%;
+    margin: 0 auto;
+}
+.form_inscri{
+    width: 100%;
+
+}
+
+}
+@media all and (max-width:375px){
+.carte{
+  width: 80%;
+}
+
+.infoSemelle{
+    width: 80%;
+}
+
+.synthetique{
+width:50%;
+}
+
+.form_conn{
+    height:300px;
+    width: 100%;
+    
+}
+.mpOubli{
+    font-size: 13px;
+}
+.ficheP{
+    margin-left:0;
+    display:flex;
+    flex-direction: column;
+}
+.prix{
+    display: flex;
+    flex-direction: column;
+}
+.r{
+    width:100%;
+
+}
+.blog{
+    width: auto;
+}
+.paraBlog{
+    margin:0 auto;
+    width: 90%;
+    margin-top: 10px;
+
+}
+
+}

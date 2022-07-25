@@ -16,6 +16,17 @@ class Panier {
         $this->produitRepository=$produitRepository;
     }
 
+
+    public function nbrQuantite(){
+        $cart =  $this->session->get('panier', []);
+        $quant=0;
+           foreach ($cart as $id){
+                $quant=$quant+$id['quantiteTotal'];
+           }
+        //    dd($quant);
+        return $quant;
+    }
+
     public function ajouter(int $id, int $pointure =NULL){
         // $this->session->remove('panier');
 

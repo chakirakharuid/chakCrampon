@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block description %}{% endblock %}
+{% block description %}Crampons de football personnalisés selon vos besoins, semelle personnalisée, matière de crampons exclusive, lacets personnalisés.
+{% endblock %}
+
 
 {% block title %}Configuration{% endblock %}
 
@@ -13,6 +15,11 @@
 {% set radio6 = 6 %}
 {% set radio7 = 7 %}
 <h1>Configuration de votre paire de crampon</h1>
+{% for message in app.flashes('panier')%}
+	<div class="alert alert-success col-6 mx-auto" role="alert">{{message}}
+	</div>
+{% endfor %}
+
 <h4 class="h4">Veuillez choisir vos lacets et votre pointure</h4>
 <section class="accessoires">
 	{% for produit  in produits %}

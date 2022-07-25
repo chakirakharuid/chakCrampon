@@ -17,16 +17,20 @@ class PanierController extends AbstractController
     if (!empty($session->get('panier'))) {
       $cart_full =$cart->lePanier();
       $total=$cart->voirTotal();
-    //   dd($cart_full);
+      $nbrQuantite = $cart->nbrQuantite();
+        // }
+      // dd($nbrQuantite);
         }else{
       //On déclarre nos variables a 0 pour qu'elles soient prise en compte quoi qu'il arrive
       $cart_full=0;
       $total=0;
+      $nbrQuantite=0;
     }
     // dd($cart_full);
         return $this->render('panier/index.html.twig', [
             'lepanier' => $cart_full,
             'total' => $total,
+            'nbrPanier'=> $nbrQuantite,
             
           
         ]);
@@ -38,17 +42,29 @@ class PanierController extends AbstractController
         isset($_POST['taille']) ? $taille = $_POST['taille'] : $taille = null;
         $product=$produit->find($id);
         $cart->ajouter($id ,$taille);
+        
       
       if (str_contains($product->getNom(), 'Semelle')){
-
+         $this->addFlash(
+        'panier',
+        'Article ajouté au panier !');
         return $this->redirectToRoute('app_matiere');
       } else if (str_contains($product->getNom(), 'Matière')) {
 
+      $this->addFlash(
+        'panier',
+        'Article ajouté au panier !'
+      );
             return $this->redirectToRoute('app_lacets');
         }
 
        else{
+      $this->addFlash(
+        'panier',
+        'Article ajouté au panier !'
+      ); 
         return $this->redirectToRoute('app_accessoires');
+
     }
     }
     #[Route('/vider', name: 'app_vider')]
